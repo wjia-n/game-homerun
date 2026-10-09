@@ -236,7 +236,7 @@ class HomerunEngine extends ChangeNotifier {
         final remain = _remainMs(_hitAt, hitFlightSecs * 1000);
         _arm(Duration(milliseconds: remain), _afterHitFlight);
       case Phase.result:
-        final remain = _remainMs(_resultAt, resultMs);
+        final remain = _remainMs(_resultAt, resultMs.toDouble());
         _arm(Duration(milliseconds: remain), _afterResult);
       case Phase.idle:
         if (current.isBot) _arm(const Duration(milliseconds: 700), _beginPitch);
@@ -248,7 +248,7 @@ class HomerunEngine extends ChangeNotifier {
   int _remainMs(DateTime? start, double totalMs) {
     if (start == null) return 50;
     final elapsed = _now().difference(start).inMilliseconds;
-    return (totalMs - elapsed).clamp(50, totalMs.toInt());
+    return (totalMs - elapsed).clamp(50, totalMs.toInt()).toInt();
   }
 
   // ------------------------------------------------------------ turn flow

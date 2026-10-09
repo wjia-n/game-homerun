@@ -191,9 +191,9 @@ class BallparkAudio {
         ];
         final out = <double>[];
         for (final pair in mel) {
-          final note = _organ(f((pair[0] as num).toDouble()), pair[1] as double);
+          final note = _organ(f((pair[0] as num).toDouble()), (pair[1] as num).toDouble());
           // Soft root bass under each note.
-          final bass = _organ(f((pair[0] as num).toDouble() - 24), pair[1] as double);
+          final bass = _organ(f((pair[0] as num).toDouble() - 24), (pair[1] as num).toDouble());
           final mixed = _mix(note, bass, 0.35);
           out.addAll(mixed);
         }

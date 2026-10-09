@@ -405,7 +405,7 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget _pauseOverlay(BallparkTheme t) {
     return Container(
-      color: Colors.black72,
+      color: Colors.black.withValues(alpha: 0.72),
       child: Center(
         child: Container(
           padding: const EdgeInsets.all(28),
@@ -614,7 +614,7 @@ class _StadiumPainter extends CustomPainter {
     } else {
       // Day-game clouds.
       final cloud = Paint()..color = Colors.white.withValues(alpha: 0.75);
-      for (final c in [(0.2, 0.10, 34), (0.62, 0.18, 26), (0.85, 0.07, 20)]) {
+      for (final c in [(0.2, 0.10, 34.0), (0.62, 0.18, 26.0), (0.85, 0.07, 20.0)]) {
         final cx = w * c.$1, cy = skyH * c.$2, r = c.$3;
         canvas.drawCircle(Offset(cx, cy), r, cloud);
         canvas.drawCircle(Offset(cx + r, cy + 4), r * 0.7, cloud);
@@ -743,10 +743,10 @@ class _StadiumPainter extends CustomPainter {
     final cx = w * 0.5;
     final moundY = h * 0.56;
     // Mound.
-    canvas.drawEllipse(
+    canvas.drawOval(
         Rect.fromCenter(center: Offset(cx, moundY), width: 74, height: 26),
         Paint()..color = theme.mound);
-    canvas.drawEllipse(
+    canvas.drawOval(
         Rect.fromCenter(
             center: Offset(cx, moundY - 3), width: 56, height: 18),
         Paint()..color = Color.lerp(theme.mound, Colors.white, 0.12)!);
@@ -871,7 +871,9 @@ class _StadiumPainter extends CustomPainter {
     canvas.drawPath(barrel, wood);
     // Wood grain.
     canvas.drawLine(Offset(-2, -len * 0.4), Offset(-3, -len * 0.9),
-        Paint()..color = dark..strokeWidth = 2);
+        Paint()
+          ..color = dark.color
+          ..strokeWidth = 2);
     // Handle.
     canvas.drawRect(const Rect.fromLTWH(-3.5, -14, 7, 14), handle);
     // Knob.
@@ -909,7 +911,7 @@ class _StadiumPainter extends CustomPainter {
       final dropY = p.drop * pow(max(0, t - 0.6) / 0.6, 2) * h * 0.08;
       final r = 6 + te.clamp(0.0, 1.0) * 13;
       // Shadow on grass for depth.
-      canvas.drawEllipse(
+      canvas.drawOval(
           Rect.fromCenter(
               center: Offset(x, plateY + 26), width: r * 2.4, height: r * 0.9),
           Paint()..color = Colors.black.withValues(alpha: 0.25));
