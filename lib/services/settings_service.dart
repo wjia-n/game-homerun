@@ -69,7 +69,7 @@ class HomerunSettings extends ChangeNotifier {
   int bestHomers = 0;
   int gamesPlayed = 0;
   int wins = 0;
-  bool isPro = false;
+  bool isPro = true; // everything unlocked — no Pro version
 
   /// Custom theme colors (ARGB ints). Defaults mirror Classic Day Game.
   Map<String, int> customColors = Map.of(defaultCustomColors);
@@ -129,7 +129,7 @@ class HomerunSettings extends ChangeNotifier {
     bestHomers = p.getInt(_kBestHomers) ?? 0;
     gamesPlayed = p.getInt(_kGames) ?? 0;
     wins = p.getInt(_kWins) ?? 0;
-    isPro = p.getBool(_kIsPro) ?? false;
+    isPro = true; // everything unlocked
     for (final k in defaultCustomColors.keys) {
       customColors[k] =
           p.getInt('$_kCustomPrefix$k') ?? defaultCustomColors[k]!;
