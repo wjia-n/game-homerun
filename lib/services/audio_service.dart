@@ -156,26 +156,6 @@ class BallparkAudio {
     return out;
   }
 
-  /// Organ-style voice (ballpark organ): strong fundamental + 2nd/4th
-  /// harmonics with a fast attack and long sustain.
-  List<double> _organ(double freq, double secs) {
-    final n = (_rate * secs).round();
-    final out = List<double>.filled(n, 0);
-    for (int i = 0; i < n; i++) {
-      final t = i / _rate;
-      final ph = 2 * pi * freq * t;
-      final tn = i / n;
-      final env = (tn / 0.03).clamp(0.0, 1.0) * (1 - pow(tn, 3).toDouble());
-      out[i] = env *
-          0.5 *
-          (sin(ph) +
-              0.45 * sin(2 * ph) +
-              0.25 * sin(4 * ph) +
-              0.12 * sin(8 * ph));
-    }
-    return out;
-  }
-
   /// Soft synth pad from a chord (shared helper).
   List<double> _padChord(List<double> freqs, double secs) {
     final n = (_rate * secs).round();
