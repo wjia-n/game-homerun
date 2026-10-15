@@ -111,7 +111,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   textAlign: TextAlign.center,
                   style: Ballpark.label(13, theme: t)),
               const SizedBox(height: 4),
-              Text('Made with ⚾ in Karachi',
+              Text('Made with ⚾ for baseball fans',
                   textAlign: TextAlign.center,
                   style: Ballpark.body(13, theme: t, color: t.muted)),
             ],
