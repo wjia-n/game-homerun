@@ -3,6 +3,7 @@ import '../services/audio_service.dart';
 import '../services/settings_service.dart';
 import '../theme/ballpark_style.dart';
 import '../theme/ballpark_themes.dart';
+import '../transfer/transfer_ui.dart';
 
 /// Audio controls + lifetime stats.
 class SettingsScreen extends StatefulWidget {
@@ -52,6 +53,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           builder: (_, _) => ListView(
             padding: const EdgeInsets.all(22),
             children: [
+              TransferSaveTile(gameSlug: 'homerun'),
               _section(t, '🔊 AUDIO', [
                 SwitchListTile(
                   title: Text('Music', style: Ballpark.body(16, theme: t)),
