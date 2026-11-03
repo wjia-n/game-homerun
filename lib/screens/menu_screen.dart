@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import '../engine/homerun_engine.dart';
@@ -147,7 +148,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           audio: widget.audio, settings: s, store: _store))),
                       _miniBtn(t, '⚙️ Settings', () => _go(SettingsScreen(
                           audio: widget.audio, settings: s))),
-                      _miniBtn(t, '⭐ PRO', () => _go(ProScreen(
+                      _miniBtn(t, defaultTargetPlatform == TargetPlatform.iOS ? '⭐ Gold Star' : '⭐ PRO', () => _go(ProScreen(
                           audio: widget.audio,
                           settings: s,
                           store: _store))),
