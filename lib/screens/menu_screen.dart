@@ -190,7 +190,8 @@ class _MenuScreenState extends State<MenuScreen> {
         const SizedBox(height: 10),
         Text('HOME RUN', style: Ballpark.display(38, theme: t)),
         Text('D E R B Y', style: Ballpark.label(15, theme: t)),
-        if (widget.settings.isPro)
+        if (defaultTargetPlatform != TargetPlatform.iOS &&
+            widget.settings.isPro)
           Container(
             margin: const EdgeInsets.only(top: 6),
             padding:

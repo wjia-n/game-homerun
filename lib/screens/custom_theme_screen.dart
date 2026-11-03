@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../services/audio_service.dart';
 import '../services/iap_service.dart';
@@ -49,10 +50,12 @@ class _CustomThemeScreenState extends State<CustomThemeScreen>
     widget.audio.click();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('That\'s a PRO perk — unlock everything in PRO!',
+        content: Text(defaultTargetPlatform == TargetPlatform.iOS
+            ? 'Custom ballparks are included for everyone.'
+            : 'That\'s a PRO perk — unlock everything in PRO!',
             style: Ballpark.body(14, theme: _t)),
         action: SnackBarAction(
-          label: 'VIEW PRO',
+          label: defaultTargetPlatform == TargetPlatform.iOS ? 'GOLD STAR' : 'VIEW PRO',
           textColor: _t.accent,
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
@@ -209,7 +212,7 @@ class _CustomThemeScreenState extends State<CustomThemeScreen>
               style: Ballpark.body(13, theme: t, color: t.muted)),
           const SizedBox(height: 10),
           SluggerButton(
-              label: 'UNLOCK WITH PRO',
+              label: defaultTargetPlatform == TargetPlatform.iOS ? '⭐ GOLD STAR' : 'UNLOCK WITH PRO',
               emoji: '⭐',
               theme: t,
               primary: true,
